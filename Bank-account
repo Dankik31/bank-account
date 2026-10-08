@@ -1,0 +1,33 @@
+class BankAccount:
+    def __init__(self):
+        self._balance = 0
+
+    def deposit(self, amount):
+        if amount <= 0:
+            print('Сумма должна быть положительной')
+            return
+        self._balance += amount
+
+    def withdraw(self, amount):
+         if amount <= 0:
+            print('Сумма должна быть положительной')
+         elif self._balance - amount >= 0:
+            self._balance = self._balance - amount
+            return
+         else:
+            print('Недостаточно средств')
+            return
+
+my_account = BankAccount()
+
+while True:
+    print('Ваш счёт:',my_account._balance )
+    x = input('Введите вид операции(снять, положить, выход):')
+    if x == 'положить':
+        my_account.deposit(int(input('Сколько:')))
+    elif x == 'снять':
+         my_account.withdraw(int(input('Сколько:')))
+    elif x == 'выход':
+        break
+    else:
+        print('Неизвестная операция')
